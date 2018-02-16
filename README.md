@@ -1,3 +1,3 @@
 # RoboPlanter
 
-Run `run.py` to have roboplater take care of your plant.
+Run `run.py` to have RoboPlanter take care of your plant.
