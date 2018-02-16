@@ -6,8 +6,8 @@ GPIO.setmode(GPIO.BCM)  # set board mode to Broadcom
 WATER_PIN = 20
 LIGHT_PIN = 21
 
-TIME_WATER = 5*60 # seconds per day
-TIME_LIGHT = 8*60*60 # seconds per day
+TIME_WATER = 5 # seconds per day
+TIME_LIGHT = 8*60 # seconds per day
 SECONDS_PER_DAY = 24*60*60 # total seconds in day
 
 LOOP_LAG = 1 # seconds between checks in states
