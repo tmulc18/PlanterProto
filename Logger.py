@@ -3,6 +3,10 @@
 TODO:
 1. Add a new object, called "Variable."  Let this
 object have properties such as name, value, last update, etc.
+
+2. Add functionality so writing to file only happens every N sec.
+In this window, variable states can be changed, and only the most recent
+value will be saved.
 """
 import datetime
 import json
