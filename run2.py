@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 from utils import *
+import serial
 
 GPIO.setmode(GPIO.BCM)  # set board mode to Broadcom
 
@@ -26,11 +27,14 @@ SECONDS_PER_DAY = 24*60*60 # total seconds in day
 LOOP_LAG = 1 # seconds between checks in states
 
 # Setup pins
-GPIO.setup(WATER_PIN, GPIO.OUT)  # set up pin 17
-GPIO.setup(LIGHT_PIN, GPIO.OUT)  # set up pin 18
+GPIO.setup(WATER_PUMP_PIN, GPIO.OUT)  # set up pin 17
+GPIO.setup(MAIN_LIGHT_PIN, GPIO.OUT)  # set up pin 18
 
 # start time in seconds
 start_time = time.time()
+
+#start serial for input
+ser = serial.Serial('/dev/ttyAMA0',9600,timeout=1)
 
 while(True):
   current_time = time.time()
@@ -38,15 +42,18 @@ while(True):
   #if duration%SECONDS_PER_DAY < TIME_WATER:
   #  GPIO.output(WATER_PIN,1)
   #else:
-  #  GPIO.output(WATER_PIN,0)
+  #  GPIO.output(WATER_PIN,0)a
+  
+  #test serial
+  print(ser.readline())
 
   # controls lights
   if duration%SECONDS_PER_DAY < TIME_LIGHT:
     main_light_pin_s = 1
-    GPIO.output(LIGHT_PIN,1)
+    GPIO.output(MAIN_LIGHT_PIN,1)
   else:
     main_light_pin_s = 0
-  GPIO.output(LIGHT_PIN,
+  GPIO.output(MAIN_LIGHT_PIN,
           main_light_pin_s)
 
   # control pump
