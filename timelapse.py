@@ -10,7 +10,8 @@ def main(interval, duration, dir_='photos', fname='pic_'):
 	camera = PiCamera()
 	camera.resolution = (1024, 768)
 
-	num_photos = (duration*60.0)/interval
+	num_photos = int((duration*60.0)/interval)
+	print("Taking %i photos".format(num_photos))
 	for i in range(num_photos):
 		camera.capture(dir_+'/'+fname+str(i)+'.jpg')
 		time.sleep(interval*60) #wait for the next photo
