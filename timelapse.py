@@ -3,7 +3,7 @@ import time
 from picamera import PiCamera
 
 
-def main(interval, duration, fname='pic_'):
+def main(interval, duration, dir_='photos', fname='pic_'):
 	"""Takes photo every inteval minutes 
 	for duration many hours."""
 
@@ -12,7 +12,7 @@ def main(interval, duration, fname='pic_'):
 
 	num_photos = (duration*60.0)/interval
 	for i in range(num_photos):
-		camera.capture(fname+str(i)+'.jpg')
+		camera.capture(dir_+'/'+fname+str(i)+'.jpg')
 		time.sleep(interval*60) #wait for the next photo
 
 
@@ -22,10 +22,13 @@ if __name__ == "__main__":
 						help='number of minutes between photos')
 	parser.add_argument('-duration', default = 24
 						help='number of hours of timelapse')
+	parser.add_argument('-dir', default = 'timelapse_photos'
+						help='folder to store timelapse')
 
 	param_dict = vars(parser.parse_args())
 
 	interval = param_dict['interval']
 	duration = param_dict['duration']
+	dir_ = param_dict['dir']
 
-	main(interval, duration)
+	main(interval, duration, dir_)
