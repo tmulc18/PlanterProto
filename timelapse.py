@@ -1,3 +1,4 @@
+import os
 import argparse
 import time
 from picamera import PiCamera
@@ -9,6 +10,10 @@ def main(interval, duration, dir_='photos', fname='pic_'):
 
 	camera = PiCamera()
 	camera.resolution = (1024, 768)
+
+	# create directory for photos
+	if not os.path.exists(dir_):
+		os.mkdir(dir_) 
 
 	num_photos = int((duration*60.0)/interval)
 	print("Taking %i photos".format(num_photos))
