@@ -18,11 +18,11 @@ def main(interval, duration, dir_='photos', fname='pic_'):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument('-interval', default = 5
+	parser.add_argument('-interval', default = 5,
 						help='number of minutes between photos')
-	parser.add_argument('-duration', default = 24
+	parser.add_argument('-duration', default = 24,
 						help='number of hours of timelapse')
-	parser.add_argument('-dir', default = 'timelapse_photos'
+	parser.add_argument('-dir', default = 'timelapse_photos',
 						help='folder to store timelapse')
 
 	param_dict = vars(parser.parse_args())
