@@ -16,7 +16,7 @@ def main(interval, duration, dir_='photos', fname='pic_'):
 		os.mkdir(dir_) 
 
 	num_photos = int((duration*60.0)/interval)
-	print("Taking %i photos".format(num_photos))
+	print("Taking {:d} photos".format(num_photos))
 	for i in range(num_photos):
 		camera.capture(dir_+'/'+fname+str(i)+'.jpg')
 		time.sleep(interval*60) #wait for the next photo
