@@ -19,6 +19,7 @@ String ecCommand = "";
 // EC
 #define rx 8                                          //EC fake rx (digital)
 #define tx 9                                          //EC fake tx must be pwm
+#define ECswitch 7                                    //EC mosfet switch
 
 SoftwareSerial myserial(rx, tx);                      //define how the soft serial port is going to work
 
@@ -58,6 +59,9 @@ void setup(void)
   myserial.begin(9600);                               // EC. set baud rate for the software serial port to 9600
   inputstring.reserve(10);                            //set aside some bytes for receiving data from the PC
   sensorstring.reserve(30);                           //set aside some bytes for receiving data from Atlas Scientific product
+  pinMode(ECswitch, OUTPUT);                          //EC mosphet switch pin
+  digitalWrite(ECswitch, HIGH);                       //set to on
+  
 
   // air temp + humidity
   dht.begin();
